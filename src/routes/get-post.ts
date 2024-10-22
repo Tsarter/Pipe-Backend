@@ -13,7 +13,7 @@ export default function getIndex(fastify: FastifyInstance): RouteOptions {
     url: "/posts/:id",
     handler: async function (request: FastifyRequest, reply: FastifyReply) {
       const { id } = request.params as { id: number };
-      const post = await postsModel.getPost(id);
+      const post = await postsModel.getPost(fastify, id);
       reply.send(post);
     },
   };

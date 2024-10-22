@@ -13,7 +13,7 @@ export default function getIndex(fastify: FastifyInstance): RouteOptions {
     url: "/posts/:id",
     handler: async function (request: FastifyRequest, reply: FastifyReply) {
       const { id } = request.params as { id: number };
-      await postsModel.deletePost(id);
+      await postsModel.deletePost(fastify, id);
       reply.code(200).send("Deleted!");
     },
   };
